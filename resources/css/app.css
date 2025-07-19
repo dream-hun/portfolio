@@ -1,0 +1,449 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@source '../views';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        '"Inter var", sans-serif', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+:root {
+    /* Blue, indigo, black, and white theme in OKLCH format */
+    --background: oklch(1 0 0); /* White */
+    --foreground: oklch(0.3 0.02 240); /* Dark blue-black */
+    --card: oklch(1 0 0); /* White */
+    --card-foreground: oklch(0.3 0.02 240); /* Dark blue-black */
+    --popover: oklch(1 0 0); /* White */
+    --popover-foreground: oklch(0.3 0.02 240); /* Dark blue-black */
+    --primary: oklch(0.65 0.2 240); /* Blue */
+    --primary-foreground: oklch(0.98 0.005 240); /* White */
+    --secondary: oklch(0.55 0.25 265); /* Indigo */
+    --secondary-foreground: oklch(0.98 0.005 240); /* White */
+    --muted: oklch(0.9 0.02 240); /* Light gray-blue */
+    --muted-foreground: oklch(0.65 0.05 240); /* Medium gray-blue */
+    --accent: oklch(0.75 0.18 240); /* Light blue */
+    --accent-foreground: oklch(0.3 0.02 240); /* Dark blue-black */
+    --destructive: oklch(0.65 0.3 30); /* Red */
+    --destructive-foreground: oklch(0.98 0.005 240); /* White */
+    --border: oklch(0.85 0.03 240); /* Light gray-blue */
+    --input: oklch(0.85 0.03 240); /* Light gray-blue */
+    --ring: oklch(0.65 0.2 240); /* Blue */
+    --chart-1: oklch(0.65 0.2 240); /* Blue */
+    --chart-2: oklch(0.55 0.25 265); /* Indigo */
+    --chart-3: oklch(0.75 0.18 240); /* Light blue */
+    --chart-4: oklch(0.45 0.22 265); /* Dark indigo */
+    --chart-5: oklch(0.85 0.1 240); /* Very light blue */
+    --radius: 0.625rem;
+    --sidebar: oklch(1 0 0); /* White */
+    --sidebar-foreground: oklch(0.3 0.02 240); /* Dark blue-black */
+    --sidebar-primary: oklch(0.65 0.2 240); /* Blue */
+    --sidebar-primary-foreground: oklch(0.98 0.005 240); /* White */
+    --sidebar-accent: oklch(0.9 0.02 240); /* Light gray-blue */
+    --sidebar-accent-foreground: oklch(0.3 0.02 240); /* Dark blue-black */
+    --sidebar-border: oklch(0.85 0.03 240); /* Light gray-blue */
+    --sidebar-ring: oklch(0.65 0.2 240); /* Blue */
+}
+
+.dark {
+    /* Dark blue, indigo, black, and white theme in OKLCH format */
+    --background: oklch(0.15 0.02 240); /* Very dark blue-black */
+    --foreground: oklch(0.98 0.005 240); /* White */
+    --card: oklch(0.2 0.03 240); /* Dark blue */
+    --card-foreground: oklch(0.98 0.005 240); /* White */
+    --popover: oklch(0.15 0.02 240); /* Very dark blue-black */
+    --popover-foreground: oklch(0.98 0.005 240); /* White */
+    --primary: oklch(0.7 0.2 240); /* Bright blue */
+    --primary-foreground: oklch(0.15 0.02 240); /* Very dark blue-black */
+    --secondary: oklch(0.6 0.25 265); /* Bright indigo */
+    --secondary-foreground: oklch(0.98 0.005 240); /* White */
+    --muted: oklch(0.3 0.05 240); /* Dark muted blue */
+    --muted-foreground: oklch(0.75 0.05 240); /* Light muted blue */
+    --accent: oklch(0.5 0.2 265); /* Medium indigo */
+    --accent-foreground: oklch(0.98 0.005 240); /* White */
+    --destructive: oklch(0.65 0.3 30); /* Red */
+    --destructive-foreground: oklch(0.98 0.005 240); /* White */
+    --border: oklch(0.3 0.05 240); /* Dark blue border */
+    --input: oklch(0.3 0.05 240); /* Dark blue input */
+    --ring: oklch(0.7 0.2 240); /* Bright blue ring */
+    --chart-1: oklch(0.7 0.2 240); /* Bright blue */
+    --chart-2: oklch(0.6 0.25 265); /* Bright indigo */
+    --chart-3: oklch(0.5 0.2 265); /* Medium indigo */
+    --chart-4: oklch(0.8 0.15 240); /* Light blue */
+    --chart-5: oklch(0.4 0.15 240); /* Dark blue */
+    --sidebar: oklch(0.2 0.03 240); /* Dark blue */
+    --sidebar-foreground: oklch(0.98 0.005 240); /* White */
+    --sidebar-primary: oklch(0.7 0.2 240); /* Bright blue */
+    --sidebar-primary-foreground: oklch(0.98 0.005 240); /* White */
+    --sidebar-accent: oklch(0.3 0.05 240); /* Dark muted blue */
+    --sidebar-accent-foreground: oklch(0.98 0.005 240); /* White */
+    --sidebar-border: oklch(0.3 0.05 240); /* Dark blue border */
+    --sidebar-ring: oklch(0.7 0.2 240); /* Bright blue ring */
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Custom gradient text */
+.text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 50%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Custom card styling */
+.card-elegant {
+    @apply bg-card text-card-foreground rounded-xl p-6 border border-border transition-all duration-300;
+    box-shadow: var(--shadow-card);
+}
+
+/* Custom hover shadow */
+.shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+}
+
+/* Hover effects */
+.group:hover .group-hover\:text-primary {
+    color: hsl(var(--primary));
+}
+
+.group:hover .group-hover\:translate-x-1 {
+    transform: translateX(0.25rem);
+}
+
+/* Dark mode is now handled by the .dark class */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+@layer base {
+  :root {
+    /* Blue, indigo, black, and white theme */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Blue primary */
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 217 91% 60%;
+
+    /* Indigo secondary */
+    --secondary: 226 70% 40%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    /* Light blue accent */
+    --accent: 213 94% 68%;
+    --accent-foreground: 222 47% 11%;
+    --accent-glow: 214 100% 80%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(221, 83%, 53%), hsl(240, 67%, 50%));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--card)));
+    --gradient-hero: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(79, 70, 229, 0.2));
+
+    /* Shadows and glows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(var(--primary) / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark blue, indigo, black, and white theme */
+    --background: 220 70% 10%; /* Very dark blue-black */
+    --foreground: 210 40% 98%; /* White */
+
+    --card: 220 60% 15%; /* Dark blue */
+    --card-foreground: 210 40% 98%; /* White */
+
+    --popover: 220 70% 10%; /* Very dark blue-black */
+    --popover-foreground: 210 40% 98%; /* White */
+
+    --primary: 220 85% 60%; /* Bright blue */
+    --primary-foreground: 220 70% 10%; /* Very dark blue-black */
+
+    --secondary: 240 70% 50%; /* Bright indigo */
+    --secondary-foreground: 210 40% 98%; /* White */
+
+    --muted: 220 40% 20%; /* Dark muted blue */
+    --muted-foreground: 220 20% 70%; /* Light muted blue */
+
+    --accent: 240 60% 50%; /* Medium indigo */
+    --accent-foreground: 210 40% 98%; /* White */
+
+    --destructive: 0 84% 60%; /* Red */
+    --destructive-foreground: 210 40% 98%; /* White */
+
+    --border: 220 40% 20%; /* Dark blue border */
+    --input: 220 40% 20%; /* Dark blue input */
+    --ring: 220 85% 60%; /* Bright blue ring */
+
+    --sidebar-background: 220 60% 15%; /* Dark blue */
+    --sidebar-foreground: 210 40% 98%; /* White */
+    --sidebar-primary: 220 85% 60%; /* Bright blue */
+    --sidebar-primary-foreground: 210 40% 98%; /* White */
+    --sidebar-accent: 220 40% 20%; /* Dark muted blue */
+    --sidebar-accent-foreground: 210 40% 98%; /* White */
+    --sidebar-border: 220 40% 20%; /* Dark blue border */
+    --sidebar-ring: 220 85% 60%; /* Bright blue ring */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Hero button with gradient and glow effects */
+  .btn-hero {
+    @apply relative overflow-hidden rounded-lg px-8 py-3 font-semibold transition-all duration-300;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow), 0 8px 25px -8px hsl(var(--primary) / 0.6);
+  }
+
+  /* Card with elegant shadow */
+  .card-elegant {
+    @apply bg-card border border-border rounded-xl p-6 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-elegant:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Gradient text effect */
+  .text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 50%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Skill tag design */
+  .skill-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-secondary/50 border border-border/50 transition-all duration-300;
+  }
+
+  .skill-tag:hover {
+    @apply bg-primary/10 border-primary/30;
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.3);
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
