@@ -1,61 +1,111 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Personal Website Development Roadmap
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Welcome! This README outlines the roadmap for developing my personal website as a Laravel web developer and content creator.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📌 Project Goal
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+To build a modern, clean, and fully responsive personal website that showcases:
+- My portfolio
+- My blog
+- My talks and content
+- My contact information
+- My projects
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🗂️ Pages to Build
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- ✅ **Home**: Hero section, intro, and featured work.
+- ✅ **About**: Personal story, skills, and experience.
+- ✅ **Projects**: Showcase selected projects with details.
+- ✅ **Blog**: List of articles, categories, and single post view.
+- ✅ **Talks**: Recordings or summaries of tech talks and podcasts.
+- ✅ **Contact**: Contact form, email, social links.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Tech Stack
 
-## Laravel Sponsors
+- **Backend**: Laravel (latest version)
+- **Frontend**: Blade, Tailwind CSS, Alpine.js (optional)
+- **Database**: MySQL / PostgreSQL
+- **Hosting**: [Vercel](https://vercel.com/) / [Forge](https://forge.laravel.com/) / [Shared Hosting]
+- **Version Control**: Git + GitHub
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🗺️ Development Roadmap
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 1️⃣ Project Setup
+- [ ] Initialize Laravel project
+- [ ] Setup Git repository
+- [ ] Configure environment variables
+- [ ] Setup database & migrations
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2️⃣ Layout & Styling
+- [ ] Setup Tailwind CSS
+- [ ] Create base Blade layout
+- [ ] Build reusable UI components (header, footer, nav)
+- [ ] Setup routes & controllers
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3️⃣ Page Development
+- [ ] **Home Page**: Hero, intro, featured projects
+- [ ] **About Page**: Bio, skills, timeline
+- [ ] **Projects Page**: List view + single project details
+- [ ] **Blog Page**: List of posts + single post view
+- [ ] **Talks Page**: List of talks/podcasts
+- [ ] **Contact Page**: Contact form with validation
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4️⃣ Features
+- [ ] Markdown support for blog posts
+- [ ] Admin panel for posts & projects (optional)
+- [ ] SEO meta tags & Open Graph
+- [ ] Newsletter integration (optional)
+- [ ] Social sharing buttons
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5️⃣ Testing & Deployment
+- [ ] Test all forms and routes
+- [ ] Setup production build
+- [ ] Deploy to hosting
+- [ ] Connect domain
+- [ ] Enable SSL
+
+---
+
+## ⚡ Future Improvements
+- Dark mode toggle
+- Search functionality for blog/projects
+- Comment system for blog
+- Analytics integration
+
+---
+
+
+
+## 🙌 Contributing
+
+This is a personal project but feedback is always welcome!
+
+---
+
+## 📬 Contact
+
+If you have suggestions, ideas, or want to collaborate:
+- 📧 Email: your-email@example.com
+- 💼 [LinkedIn](https://linkedin.com/in/yourusername)
+- 🐙 [GitHub](https://github.com/yourusername)
+
+---
+
+**Happy coding!**
+
