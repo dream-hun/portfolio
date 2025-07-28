@@ -101,9 +101,9 @@ This is a personal project but feedback is always welcome!
 ## 📬 Contact
 
 If you have suggestions, ideas, or want to collaborate:
-- 📧 Email: your-email@example.com
-- 💼 [LinkedIn](https://linkedin.com/in/yourusername)
-- 🐙 [GitHub](https://github.com/yourusername)
+- 📧 Email: hello@jtalkdev.com
+- 💼 [LinkedIn](https://linkedin.com/in/jtalkdev)
+- 🐙 [GitHub](https://github.com/dream-hun)
 
 ---
 
