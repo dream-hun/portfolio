@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Actions\Settings;
+namespace App\Actions\Categories;
 
-use App\Models\Setting;
+use App\Models\Category;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-final class ListSettingsAction
+final class ListCategoryAction
 {
     public function handle(int $perPage = 10): LengthAwarePaginator
     {
-        return Setting::query()
-            ->orderBy('created_at', 'desc')
+        return Category::query()
+            ->orderBy('name')
             ->paginate($perPage);
     }
 }

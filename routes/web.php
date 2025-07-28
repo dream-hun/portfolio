@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 // Home page
@@ -45,13 +47,6 @@ Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
 
-// Contact form submission
-Route::post('/contact', function () {
-    // In a real application, you would process the form submission here
-    // For now, we'll just redirect back with a success message
-    return redirect()->back()->with('success', 'Your message has been sent!');
-})->name('contact.submit');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -62,7 +57,8 @@ Route::middleware('auth')->group(function (): void {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Settings routes
-    Route::resource('settings', \App\Http\Controllers\SettingController::class);
+    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::get('categories', CategoryController::class)->name('categories.index');
 });
 
 require __DIR__.'/auth.php';

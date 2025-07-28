@@ -35,19 +35,6 @@ final class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
-    /**
      * Get the roles that belong to the user.
      */
     public function roles(): BelongsToMany
@@ -88,8 +75,21 @@ final class User extends Authenticatable
      */
     public function hasPermission(string $permission): bool
     {
-        return $this->roles()->whereHas('permissions', function ($query) use ($permission) {
+        return $this->roles()->whereHas('permissions', function ($query) use ($permission): void {
             $query->where('slug', $permission);
         })->exists();
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }
