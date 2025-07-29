@@ -14,10 +14,9 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-Route::get('blog', [BlogController::class,'index'])->name('blog.index');
+Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 
-Route::get('/blog/{slug}',[BlogController::class,'show'])->name('blog.show');
-
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/talks', function () {
     return view('pages.talks.index');

@@ -7,8 +7,8 @@
     </td>
     <td class="pl-4 py-4 text-left hidden sm:table-cell">
         <span
-            class="inline-flex items-center rounded-md capitalize px-2 py-1 text-xs font-medium ring-1 ring-inset {{ $post->status_color }}">
-            {{ $post->status }}
+            class="inline-flex items-center rounded-md capitalize px-2 py-1 text-xs font-medium ring-1 ring-inset {{ $post->status->color() }}">
+            {{ $post->status->label() }}
         </span>
     </td>
     <td class="pl-4 py-4 text-left hidden lg:table-cell text-sm text-slate-600">

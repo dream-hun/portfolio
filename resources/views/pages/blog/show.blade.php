@@ -3,9 +3,14 @@
 @section('title', $post->title . ' - J Talk Dev')
 
 @section('content')
-    <!-- Blog Post Header -->
     <section class="py-24 px-4 sm:px-6 lg:px-8 bg-background">
         <div class="max-w-4xl mx-auto">
+            <div class="mb-10 rounded-xl overflow-hidden shadow-elegant slide-up" style="animation-delay: 0.3s;">
+                <img
+                    src="{{ $post->featured_image }}"
+                    alt="Blog post featured image"
+                    class="w-full h-auto object-cover">
+            </div>
             <!-- Post Meta Information -->
             <div class="flex flex-wrap items-center gap-4 mb-6 text-sm text-foreground/60 slide-up">
                 <span class="skill-tag">
@@ -29,7 +34,7 @@
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12,6 12,12 16,14"></polyline>
                     </svg>
-                    8 min read
+                    {{ $post->readingTimeAttribute() }} min read
                 </span>
             </div>
 
@@ -38,22 +43,11 @@
                 {{$post->title}}
             </h1>
 
-            <!-- Featured Image -->
-            <div class="mb-10 rounded-xl overflow-hidden shadow-elegant slide-up" style="animation-delay: 0.3s;">
-                <img
-                    src="{{ $post->featured_image }}"
-                    alt="Blog post featured image"
-                    class="w-full h-auto object-cover"
-                >
-            </div>
-
             <!-- Post Content -->
             <div class="prose prose-lg max-w-none text-foreground/90 slide-up text-pretty" style="animation-delay: 0.4s;">
                 <p>
                     {!! $post->content !!}
                 </p>
-
-
 
             </div>
 
