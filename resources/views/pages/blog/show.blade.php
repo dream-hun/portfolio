@@ -60,7 +60,7 @@
             <!-- Author Bio -->
             <div class="mt-16 p-6 bg-card rounded-xl border border-border flex items-center gap-6 slide-up" style="animation-delay: 0.5s;">
                 <img
-                    src="{{ asset('assets/About section image.jpeg') }}"
+                    src="{{ asset('assets/About s/node_moduleseection image.jpeg') }}"
                     alt="Jacques M"
                     class="w-16 h-16 rounded-full object-cover"
                 >
@@ -79,7 +79,7 @@
                 <div class="grid gap-8 md:grid-cols-2">
                     <div class="card-elegant group">
                         <h3 class="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                           I don't know
+                          Next Post
                         </h3>
                         <p class="text-foreground/70 mb-4">
                             Explore the latest JavaScript features and how they can improve your development workflow.
