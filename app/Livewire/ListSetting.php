@@ -11,13 +11,13 @@ use Livewire\Component;
 
 final class ListSetting extends Component
 {
-
     public function delete($settingId): void
     {
-        $setting=Setting::find($settingId);
+        $setting = Setting::find($settingId);
         $setting->delete();
         sleep(1);
     }
+
     public function render(ListSettingsAction $action): View
     {
         $settings = $action->handle();

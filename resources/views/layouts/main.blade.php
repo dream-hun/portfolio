@@ -24,7 +24,7 @@
     @yield('content')
 </main>
 
-<footer class="bg-secondary text-primary py-12">
+<footer class="bg-gray-900 text-white py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 md:grid-cols-3 items-center">
             <!-- Logo and Copyright -->
@@ -35,18 +35,18 @@
                     </div>
                     <span class="text-xl font-bold text-gradient">J Talk Dev</span>
                 </div>
-                <p class="text-primary/70">&copy; {{ date('Y') }} {{config('app.name')}}. All rights reserved.</p>
+                <p class="text-white">&copy; {{ date('Y') }} {{config('app.name')}}. All rights reserved.</p>
             </div>
 
             <!-- Quick Links -->
             <div class="text-center">
                 <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="{{ route('home') }}" class="text-primary/70 hover:text-primary transition-colors">Home</a>
-                    <a href="{{ route('blog.index') }}" class="text-primary/70 hover:text-primary transition-colors">Blog</a>
-                    <a href="{{ route('talks.index') }}" class="text-primary/70 hover:text-primary transition-colors">Talks</a>
-                    <a href="{{ route('projects.index') }}" class="text-primary/70 hover:text-primary transition-colors">Projects</a>
-                    <a href="{{ route('contact') }}" class="text-primary/70 hover:text-primary transition-colors">Contact</a>
+                    <a href="{{ route('home') }}" class="text-white hover:text-primary transition-colors">Home</a>
+                    <a href="{{ route('blog.index') }}" class="text-white hover:text-primary transition-colors">Blog</a>
+                    <a href="{{ route('talks.index') }}" class="text-white hover:text-primary transition-colors">Talks</a>
+                    <a href="{{ route('projects.index') }}" class="text-white hover:text-primary transition-colors">Projects</a>
+                    <a href="{{ route('contact') }}" class="text-white hover:text-primary transition-colors">Contact</a>
                 </div>
             </div>
 
@@ -70,9 +70,7 @@
                         </svg>
                     </a>
                 </div>
-                <p class="mt-4 text-primary/60 text-sm">
-                    Built with ❤️ using Laravel & Tailwind CSS
-                </p>
+
             </div>
         </div>
     </div>

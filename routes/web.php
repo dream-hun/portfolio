@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
@@ -12,17 +14,11 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-// Blog routes
-Route::get('/blog', function () {
-    return view('pages.blog.index');
-})->name('blog.index');
+Route::get('blog', [BlogController::class,'index'])->name('blog.index');
 
-Route::get('/blog/{slug}', function ($slug) {
-    // In a real application, you would fetch the blog post from the database
-    return view('pages.blog.show', ['slug' => $slug]);
-})->name('blog.show');
+Route::get('/blog/{slug}',[BlogController::class,'show'])->name('blog.show');
 
-// Talks routes
+
 Route::get('/talks', function () {
     return view('pages.talks.index');
 })->name('talks.index');
@@ -59,6 +55,7 @@ Route::middleware('auth')->group(function (): void {
     // Settings routes
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('categories', CategoryController::class)->name('categories.index');
+    Route::get('posts', PostController::class)->name('posts.index');
 });
 
 require __DIR__.'/auth.php';

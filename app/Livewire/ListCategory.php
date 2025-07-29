@@ -19,6 +19,7 @@ final class ListCategory extends Component
 
         sleep(1);
     }
+
     public function render(ListCategoryAction $action): View
     {
         $categories = $action->handle();

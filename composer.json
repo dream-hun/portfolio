@@ -23,6 +23,7 @@
         "laravel/sail": "^1.43.1",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.8.2",
+        "opcodesio/log-viewer": "^3.19",
         "pestphp/pest": "^3.8.2",
         "pestphp/pest-plugin-laravel": "^3.2",
         "rector/rector": "^2.1.1"

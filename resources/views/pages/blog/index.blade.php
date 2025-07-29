@@ -19,19 +19,19 @@
 
             <!-- Blog Posts -->
             <div class="space-y-8">
-                <!-- Post 1 -->
-                <article class="card-elegant group cursor-pointer slide-up" style="animation-delay: 0.2s;"
-                         onclick="window.location.href='{{ route('blog.show', 'building-scalable-react-applications') }}'">
-                    <!-- Post Meta Information -->
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div class="flex items-center space-x-4 mb-2 md:mb-0">
-                            <!-- Category Badge -->
-                            <span class="skill-tag">
+                @foreach($posts as  $post)
+                    <article class="card-elegant group cursor-pointer slide-up" style="animation-delay: 0.2s;"
+                             onclick="window.location.href='{{ route('blog.show', $post->slug) }}'">
+                        <!-- Post Meta Information -->
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div class="flex items-center space-x-4 mb-2 md:mb-0">
+                                <!-- Category Badge -->
+                                <span class="skill-tag">
                                 React
                             </span>
 
-                            <!-- Date and Read Time -->
-                            <div class="flex items-center text-sm text-foreground/60 space-x-4">
+                                <!-- Date and Read Time -->
+                                <div class="flex items-center text-sm text-foreground/60 space-x-4">
                                 <span class="flex items-center">
                                     <!-- Calendar Icon -->
                                     <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@
                                     </svg>
                                     January 15, 2024
                                 </span>
-                                <span class="flex items-center">
+                                    <span class="flex items-center">
                                     <!-- Clock Icon -->
                                     <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="10"></circle>
@@ -50,151 +50,34 @@
                                     </svg>
                                     8 min read
                                 </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Post Title -->
-                    <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors text-foreground">
-                        Building Scalable React Applications
-                    </h2>
+                        <!-- Post Title -->
+                        <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors text-foreground">
+                            {{$post->title}}
+                        </h2>
 
-                    <!-- Post Excerpt -->
-                    <p class="text-foreground/70 mb-6 leading-relaxed">
-                        Learn the best practices for structuring and organizing large React applications for
-                        maintainability and performance.
-                    </p>
+                        <!-- Post Excerpt -->
+                        <p class="text-foreground/70 mb-6 leading-relaxed">
+                            {{$post->excerpt }}
+                        </p>
 
-                    <!-- Read More Button -->
-                    <div
-                        class="flex items-center font-medium text-foreground/70 group-hover:text-primary transition-all duration-300">
-                        Read More
-                        <!-- Arrow Right Icon -->
-                        <svg class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
-                             stroke="currentColor" viewBox="0 0 24 24">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12,5 19,12 12,19"></polyline>
-                        </svg>
-                    </div>
-                </article>
-
-                <!-- Post 2 -->
-                <article class="card-elegant group cursor-pointer slide-up" style="animation-delay: 0.4s;"
-                         onclick="window.location.href='{{ route('blog.show', 'modern-javascript-es2024-features') }}'">
-                    <!-- Post Meta Information -->
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div class="flex items-center space-x-4 mb-2 md:mb-0">
-                            <!-- Category Badge -->
-                            <span class="skill-tag">
-                                JavaScript
-                            </span>
-
-                            <!-- Date and Read Time -->
-                            <div class="flex items-center text-sm text-foreground/60 space-x-4">
-                                <span class="flex items-center">
-                                    <!-- Calendar Icon -->
-                                    <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                                    </svg>
-                                    January 10, 2024
-                                </span>
-                                <span class="flex items-center">
-                                    <!-- Clock Icon -->
-                                    <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <polyline points="12,6 12,12 16,14"></polyline>
-                                    </svg>
-                                    6 min read
-                                </span>
-                            </div>
+                        <!-- Read More Button -->
+                        <div
+                            class="flex items-center font-medium text-foreground/70 group-hover:text-primary transition-all duration-300">
+                            Read More
+                            <!-- Arrow Right Icon -->
+                            <svg class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
+                                 stroke="currentColor" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12,5 19,12 12,19"></polyline>
+                            </svg>
                         </div>
-                    </div>
+                    </article>
+                @endforeach
 
-                    <!-- Post Title -->
-                    <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors text-foreground">
-                        Modern JavaScript: ES2024 Features
-                    </h2>
-
-                    <!-- Post Excerpt -->
-                    <p class="text-foreground/70 mb-6 leading-relaxed">
-                        Explore the latest JavaScript features and how they can improve your development workflow and
-                        code quality.
-                    </p>
-
-                    <!-- Read More Button -->
-                    <div
-                        class="flex items-center font-medium text-foreground/70 group-hover:text-primary transition-all duration-300">
-                        Read More
-                        <!-- Arrow Right Icon -->
-                        <svg class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
-                             stroke="currentColor" viewBox="0 0 24 24">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12,5 19,12 12,19"></polyline>
-                        </svg>
-                    </div>
-                </article>
-
-                <!-- Post 3 -->
-                <article class="card-elegant group cursor-pointer slide-up" style="animation-delay: 0.6s;"
-                         onclick="window.location.href='{{ route('blog.show', 'understanding-typescript-generics') }}'">
-                    <!-- Post Meta Information -->
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div class="flex items-center space-x-4 mb-2 md:mb-0">
-                            <!-- Category Badge -->
-                            <span class="skill-tag">
-                                TypeScript
-                            </span>
-
-                            <!-- Date and Read Time -->
-                            <div class="flex items-center text-sm text-foreground/60 space-x-4">
-                                <span class="flex items-center">
-                                    <!-- Calendar Icon -->
-                                    <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                                    </svg>
-                                    January 5, 2024
-                                </span>
-                                <span class="flex items-center">
-                                    <!-- Clock Icon -->
-                                    <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <polyline points="12,6 12,12 16,14"></polyline>
-                                    </svg>
-                                    12 min read
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Post Title -->
-                    <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors text-foreground">
-                        Understanding TypeScript Generics
-                    </h2>
-
-                    <!-- Post Excerpt -->
-                    <p class="text-foreground/70 mb-6 leading-relaxed">
-                        A deep dive into TypeScript generics and how to use them effectively to write more flexible and
-                        reusable code.
-                    </p>
-
-                    <!-- Read More Button -->
-                    <div
-                        class="flex items-center font-medium text-foreground/70 group-hover:text-primary transition-all duration-300">
-                        Read More
-                        <!-- Arrow Right Icon -->
-                        <svg class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
-                             stroke="currentColor" viewBox="0 0 24 24">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12,5 19,12 12,19"></polyline>
-                        </svg>
-                    </div>
-                </article>
             </div>
 
             <!-- Pagination -->
@@ -208,7 +91,7 @@
                              aria-hidden="true">
                             <path fill-rule="evenodd"
                                   d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                  clip-rule="evenodd"/>
+                                  clip-rule="evenodd" />
                         </svg>
                     </a>
                     <a href="#" aria-current="page"
@@ -227,7 +110,7 @@
                              aria-hidden="true">
                             <path fill-rule="evenodd"
                                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clip-rule="evenodd"/>
+                                  clip-rule="evenodd" />
                         </svg>
                     </a>
                 </nav>

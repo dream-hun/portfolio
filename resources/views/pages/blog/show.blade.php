@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Blog Post - J Talk Dev')
+@section('title', $post->title . ' - J Talk Dev')
 
 @section('content')
     <!-- Blog Post Header -->
@@ -9,15 +9,7 @@
             <!-- Post Meta Information -->
             <div class="flex flex-wrap items-center gap-4 mb-6 text-sm text-foreground/60 slide-up">
                 <span class="skill-tag">
-                    @if(str_contains($slug, 'react'))
-                        React
-                    @elseif(str_contains($slug, 'javascript'))
-                        JavaScript
-                    @elseif(str_contains($slug, 'typescript'))
-                        TypeScript
-                    @else
-                        Web Development
-                    @endif
+                    Tag
                 </span>
 
                 <span class="flex items-center">
@@ -43,74 +35,26 @@
 
             <!-- Post Title -->
             <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-foreground slide-up" style="animation-delay: 0.2s;">
-                @if($slug == 'building-scalable-react-applications')
-                    Building Scalable React Applications
-                @elseif($slug == 'modern-javascript-es2024-features')
-                    Modern JavaScript: ES2024 Features
-                @elseif($slug == 'understanding-typescript-generics')
-                    Understanding TypeScript Generics
-                @else
-                    {{ ucwords(str_replace('-', ' ', $slug)) }}
-                @endif
+                {{$post->title}}
             </h1>
 
             <!-- Featured Image -->
             <div class="mb-10 rounded-xl overflow-hidden shadow-elegant slide-up" style="animation-delay: 0.3s;">
                 <img
-                    src="{{ asset('assets/blog/featured-image.jpg') }}"
+                    src="{{ $post->featured_image }}"
                     alt="Blog post featured image"
                     class="w-full h-auto object-cover"
                 >
             </div>
 
             <!-- Post Content -->
-            <div class="prose prose-lg max-w-none text-foreground/90 slide-up" style="animation-delay: 0.4s;">
+            <div class="prose prose-lg max-w-none text-foreground/90 slide-up text-pretty" style="animation-delay: 0.4s;">
                 <p>
-                    This is a placeholder for the blog post content. In a real application, this would be fetched from a database or CMS.
+                    {!! $post->content !!}
                 </p>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl sit amet nisl.
-                </p>
 
-                <h2>Key Points</h2>
 
-                <ul>
-                    <li>First important point about this topic</li>
-                    <li>Second key consideration when implementing this</li>
-                    <li>Third insight that readers should take away</li>
-                    <li>Fourth practical tip for real-world applications</li>
-                </ul>
-
-                <p>
-                    Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl sit amet nisl.
-                </p>
-
-                <h2>Code Example</h2>
-
-                <pre><code class="language-javascript">// Sample code block
-function example() {
-  const greeting = 'Hello, World!';
-  console.log(greeting);
-  return greeting;
-}
-
-// Usage
-example();</code></pre>
-
-                <p>
-                    Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl sit amet nisl.
-                </p>
-
-                <blockquote>
-                    <p>This is an important quote or takeaway that summarizes a key point from the article.</p>
-                </blockquote>
-
-                <h2>Conclusion</h2>
-
-                <p>
-                    In conclusion, this article has covered the main points about this topic. We've explored the key concepts, provided practical examples, and offered insights into best practices.
-                </p>
             </div>
 
             <!-- Author Bio -->
@@ -135,15 +79,7 @@ example();</code></pre>
                 <div class="grid gap-8 md:grid-cols-2">
                     <div class="card-elegant group">
                         <h3 class="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                            @if($slug != 'modern-javascript-es2024-features')
-                                <a href="{{ route('blog.show', 'modern-javascript-es2024-features') }}">
-                                    Modern JavaScript: ES2024 Features
-                                </a>
-                            @else
-                                <a href="{{ route('blog.show', 'building-scalable-react-applications') }}">
-                                    Building Scalable React Applications
-                                </a>
-                            @endif
+                           I don't know
                         </h3>
                         <p class="text-foreground/70 mb-4">
                             Explore the latest JavaScript features and how they can improve your development workflow.
@@ -152,15 +88,7 @@ example();</code></pre>
 
                     <div class="card-elegant group">
                         <h3 class="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                            @if($slug != 'understanding-typescript-generics')
-                                <a href="{{ route('blog.show', 'understanding-typescript-generics') }}">
-                                    Understanding TypeScript Generics
-                                </a>
-                            @else
-                                <a href="{{ route('blog.show', 'building-scalable-react-applications') }}">
-                                    Building Scalable React Applications
-                                </a>
-                            @endif
+                            May be
                         </h3>
                         <p class="text-foreground/70 mb-4">
                             A deep dive into TypeScript generics and how to use them effectively.
