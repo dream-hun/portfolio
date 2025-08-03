@@ -20,6 +20,7 @@
     "@alpinejs/focus": "^3.14.9",
     "@alpinejs/ui": "^3.14.9",
     "alpinejs": "^3.14.9",
+    "select2": "^4.1.0-rc.0",
     "tailwindcss-animate": "^1.0.7"
   }
 }

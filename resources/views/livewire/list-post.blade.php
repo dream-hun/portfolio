@@ -3,6 +3,12 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
+    @if($notification)
+        <x-alert :type="$notification['type']" show="true">
+            {{ $notification['message'] }}
+        </x-alert>
+    @endif
+
     <div class="flex justify-between items-center">
         <h1 class="text-3xl font-semibold leading-6 text-slate-900">Posts</h1>
         <livewire:create-post-modal @postAdded="$refresh" />

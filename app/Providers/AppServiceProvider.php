@@ -8,7 +8,6 @@ use App\Models\Setting;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 
 final class AppServiceProvider extends ServiceProvider
 {

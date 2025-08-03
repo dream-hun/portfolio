@@ -29,6 +29,7 @@ final class CategoryRow extends Component
         $this->form->update();
         $this->category->refresh();
         $this->reset('categoryEditModal');
+        $this->dispatch('categoryUpdated');
         $this->successIndicator = true;
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 // Home page
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function (): void {
     // Settings routes
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('categories', CategoryController::class)->name('categories.index');
+    Route::get('tags', TagController::class)->name('tags.index');
     Route::get('posts', PostController::class)->name('posts.index');
 });
 

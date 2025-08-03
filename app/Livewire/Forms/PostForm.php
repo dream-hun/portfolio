@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Forms;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
@@ -19,6 +21,13 @@ final class PostForm extends Form
 
     #[Validate('required|min:50')]
     public string $content = '';
+
+    #[Validate('required|exists:categories,id')]
+    public $category_id;
+
+    #[Validate('array')]
+    #[Validate('exists:tags,id')]
+    public $tags = [];
 
     #[Validate('in:draft,published,archived')]
     public $status = 'draft';
@@ -37,6 +46,8 @@ final class PostForm extends Form
         $this->title = $post->title;
         $this->slug = $post->slug;
         $this->content = $post->content;
+        $this->category_id = $post->category_id;
+        $this->tags = $post->tags->pluck('id')->toArray();
         $this->status = $post->status;
         $this->published_at = $post->published_at?->format('Y-m-d\TH:i');
         $this->featured_image = $post->featured_image;
@@ -50,17 +61,22 @@ final class PostForm extends Form
             ? Carbon::parse($this->published_at)
             : ($this->status === 'published' ? now() : null);
 
-        Post::create([
+        $post = Post::create([
             'uuid' => Str::uuid()->toString(),
             'title' => $this->title,
             'slug' => Str::slug($this->title),
             'content' => $this->content,
+            'category_id' => $this->category_id,
             'status' => $this->status,
             'published_at' => $publishedAt,
             'featured_image' => $this->featured_image ?? '',
         ]);
 
-        $this->reset(['title', 'slug', 'content', 'status', 'published_at', 'featured_image']);
+        if (!empty($this->tags)) {
+            $post->tags()->attach($this->tags);
+        }
+
+        $this->reset(['title', 'slug', 'content', 'category_id', 'tags', 'status', 'published_at', 'featured_image']);
     }
 
     public function update(): void
@@ -75,9 +91,13 @@ final class PostForm extends Form
             'title' => $this->title,
             'slug' => Str::slug($this->title),
             'content' => $this->content,
+            'category_id' => $this->category_id,
             'status' => $this->status,
             'published_at' => $publishedAt,
             'featured_image' => $this->featured_image,
         ]);
+
+        // Sync tags (attach new ones, detach removed ones)
+        $this->post->tags()->sync($this->tags);
     }
 }

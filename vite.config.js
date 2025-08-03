@@ -10,4 +10,12 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    optimizeDeps: {
+        include: ['jquery', 'select2']
+    },
+    build: {
+        rollupOptions: {
+            external: ['jquery']
+        }
+    }
 });

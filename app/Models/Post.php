@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\PostStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Str;
 
 final class Post extends Model
@@ -27,18 +28,24 @@ final class Post extends Model
 
     public function getExcerptAttribute(): string
     {
-        return Str::limit(strip_tags($this->content),150);
+        return Str::limit(strip_tags($this->content), 150);
     }
 
-    public function readingTimeAttribute():int
+    public function readingTimeAttribute(): int
     {
-        $wordCount=str_word_count(strip_tags($this->content??''));
-        return max(1, (int) round($wordCount/200));
+        $wordCount = str_word_count(strip_tags($this->content ?? ''));
+
+        return max(1, (int) round($wordCount / 200));
 
     }
 
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

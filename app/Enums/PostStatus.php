@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum PostStatus: string
@@ -12,8 +14,8 @@ enum PostStatus: string
     {
         return match ($this) {
             self::Published => 'bg-green-50 text-green-700 ring-green-600/20',
-            self::Draft     => 'bg-yellow-50 text-yellow-700 ring-yellow-600/20',
-            self::Archived  => 'bg-gray-50 text-gray-700 ring-gray-600/20',
+            self::Draft => 'bg-yellow-50 text-yellow-700 ring-yellow-600/20',
+            self::Archived => 'bg-gray-50 text-gray-700 ring-gray-600/20',
         };
     }
 
@@ -21,8 +23,8 @@ enum PostStatus: string
     {
         return match ($this) {
             self::Published => 'Published',
-            self::Draft     => 'Draft',
-            self::Archived  => 'Archived',
+            self::Draft => 'Draft',
+            self::Archived => 'Archived',
         };
     }
 }

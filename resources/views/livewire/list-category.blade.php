@@ -1,5 +1,11 @@
 <div class="flex flex-col gap-8 w-full px-8 dark:bg-gray-900">
 
+    @if($notification)
+        <x-alert :type="$notification['type']" show="true">
+            {{ $notification['message'] }}
+        </x-alert>
+    @endif
+
     <div class="flex justify-between">
         <h1 class="text-3xl font-semibold leading-6 text-slate-900">&nbsp;</h1>
 

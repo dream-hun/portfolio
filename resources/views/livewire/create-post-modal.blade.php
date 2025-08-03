@@ -25,6 +25,65 @@
                     </label>
 
                     <label class="flex flex-col gap-2 font-bold">
+                        Category
+                        <select wire:model="form.category_id"
+                                class="px-3 py-2 border font-normal rounded-lg border-slate-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            <option value="">Select a category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('form.category_id')
+                        <div class="text-sm text-red-500 font-normal">{{ $message }}</div>
+                        @enderror
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4">
+                    <label class="flex flex-col gap-2 font-bold">
+                        Tags
+                        <div wire:ignore x-data="{
+                            selectedTags: @entangle('form.tags').defer,
+                            init() {
+                                let select2 = $(this.$refs.select).select2({
+                                    placeholder: 'Select tags',
+                                    allowClear: true,
+                                    width: '100%',
+                                    theme: 'bootstrap-5',
+                                    closeOnSelect: false
+                                });
+
+                                // Set initial value
+                                select2.val(this.selectedTags).trigger('change');
+
+                                // Update Alpine data when Select2 changes
+                                select2.on('change', (e) => {
+                                    this.selectedTags = $(e.target).val();
+                                });
+
+                                // Update Select2 when Alpine data changes
+                                this.$watch('selectedTags', (value) => {
+                                    if (JSON.stringify(value) !== JSON.stringify($(this.$refs.select).val())) {
+                                        $(this.$refs.select).val(value).trigger('change');
+                                    }
+                                });
+                            }
+                        }">
+                            <select x-ref="select" multiple
+                                    class="select2-tags px-3 py-2 border font-normal rounded-lg border-slate-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('form.tags')
+                        <div class="text-sm text-red-500 font-normal">{{ $message }}</div>
+                        @enderror
+                    </label>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <label class="flex flex-col gap-2 font-bold">
                         Status
                         <select wire:model="form.status"
                                 class="px-3 py-2 border font-normal rounded-lg border-slate-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
